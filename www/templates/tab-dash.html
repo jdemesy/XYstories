@@ -1,28 +1,20 @@
 <ion-view view-title="Accueil">
-  <ion-content class="padding">
-    <div class="list card">
-      <div class="item item-divider">Dernières nouvelles</div>
-      <div class="item item-body">
-        <div>
-          Il y a <b>3</b> nouvelles stories !
+  <ion-content>
+    <div class="list">
+      <a class="item item-icon-right" href="#/tab/dash/news">
+        News
+        <i class="icon ion-ios-arrow-right"></i>
+      </a>
+    </div>
+    <ion-scroll zooming="false" direction="y" style="height: 88vh">
+      <div class="list card" ng-repeat="story in stories | orderBy: '-date'">
+        <div class="item item-divider">{{story.name}}</div>
+        <div class="item item-body">
+          <div>
+            {{story.content}}
+          </div>
         </div>
       </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Santé</div>
-      <div class="item item-body">
-        <div>
-          Vous avez eu de l'activité sexuelle ! :P
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">A venir</div>
-      <div class="item item-body">
-        <div>
-          Bientôt une nouvelle catégorie ! Venez voter sur notre site.
-        </div>
-      </div>
-    </div>
+    </ion-scroll>
   </ion-content>
 </ion-view>

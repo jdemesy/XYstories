@@ -1,6 +1,22 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, $http, Backand) {
+  $http.get(Backand.getApiUrl() + '/1/objects/stories').success(function(data) {
+    // you can do some processing here
+    console.log("loading json");
+    $scope.stories = data.data;
+    console.log(data);
+  });
+})
+
+.controller('NewsCtrl', function($scope, $http, Backand) {
+  $http.get(Backand.getApiUrl() + '/1/objects/news').success(function(data) {
+    // you can do some processing here
+    console.log("loading json");
+    $scope.news = data.data;
+    console.log(data);
+  });
+})
 
 .controller('ChatsCtrl', function($scope, $http, Backand) {
   // With the new view caching in Ionic, Controllers are only called
