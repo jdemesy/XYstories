@@ -1,20 +1,27 @@
 /* Empty. Add your own CSS if you like */
-@@font-face {
-  font-family: 'ComicSansMS';
+@font-face {
+    font-family: 'ComicSansMS';
+    src: url('../fonts/ComicSansMS.eot');
+    src: url('../fonts/ComicSansMS.eot') format('embedded-opentype'),
+         url('../fonts/ComicSansMS.woff2') format('woff2'),
+         url('../fonts/ComicSansMS.woff') format('woff'),
+         url('../fonts/ComicSansMS.ttf') format('truetype'),
+         url('../fonts/ComicSansMS.svg#ComicSansMS') format('svg');
 }
 
+
 .title {
-  font-family: 'ComicSansMS';
+  font-family: 'ComicSansMS', sans-serif;
 }
 
 .item {
-  font-family: 'ComicSansMS';
+  font-family: 'ComicSansMS', sans-serif;
 }
 
 .item-content {
-  font-family: 'ComicSansMS';
+  font-family: 'ComicSansMS', sans-serif;
 }
 
 .ng-binding {
-  font-family: 'ComicSansMS';
+  font-family: 'ComicSansMS', sans-serif;
 }
