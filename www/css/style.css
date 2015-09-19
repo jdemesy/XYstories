@@ -1,1 +1,20 @@
 /* Empty. Add your own CSS if you like */
+@@font-face {
+  font-family: 'ComicSansMS';
+}
+
+.title {
+  font-family: 'ComicSansMS';
+}
+
+.item {
+  font-family: 'ComicSansMS';
+}
+
+.item-content {
+  font-family: 'ComicSansMS';
+}
+
+.ng-binding {
+  font-family: 'ComicSansMS';
+}
