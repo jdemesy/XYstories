@@ -1,9 +1,9 @@
 <ion-view view-title="Stories">
   <ion-content>
     <ion-list>
-      <ion-item class="item item-icon-right" ng-repeat="chat in chats" href="#/tab/chats/{{chat.id}}">
-        <h2>{{chat.name}}</h2>
-        <i class="icon ion-ios-arrow-right"></i>
+      <ion-item class="item item-icon-right" ng-repeat="chat in chats | orderBy: 'name'" href="#/tab/chats/{{chat.id}}">
+        <h2 class="assertive">{{chat.name}}</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
   </ion-content>

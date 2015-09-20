@@ -34,16 +34,6 @@ angular.module('starter.controllers', [])
     $scope.chats = data.data;
     console.log(data);
   });
-  // self.getList = function(name, sort, filter) {
-  //     return $http({
-  //       method: 'GET',
-  //       url: Backand.getApiUrl() + '/1/objects/' + name,
-  //       params: {
-  //         filter: filter || '',
-  //         sort: sort || ''
-  //       }
-  //     });
-  //   }
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, $http, Backand) {
@@ -57,6 +47,13 @@ angular.module('starter.controllers', [])
 
 .controller('StoryDetailCtrl', function($scope, $stateParams, $http, Backand) {
   $http.get(Backand.getApiUrl() + '/1/objects/stories/' + $stateParams.storyId).success(function(data) {
+    $scope.story = data;
+    console.log(data);
+  });
+})
+
+.controller('ShuffleCtrl', function($scope, $stateParams, $http, Backand) {
+  $http.get(Backand.getApiUrl() + '/1/query/data/getRandomStory').success(function(data) {
     $scope.story = data;
     console.log(data);
   });

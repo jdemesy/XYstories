@@ -91,6 +91,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
+  .state('tab.shuffle', {
+    url: '/shuffle',
+    views: {
+      'tab-shuffle': {
+        templateUrl: 'templates/tab-shuffle.html',
+        controller: 'ShuffleCtrl'
+      }
+    }
+  })
+
+  .state('tab.favorites', {
+    url: '/favorites',
+    views: {
+      'tab-favorites': {
+        templateUrl: 'templates/tab-favorites.html',
+        controller: 'FavoritesCtrl'
+      }
+    }
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {

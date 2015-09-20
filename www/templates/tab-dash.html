@@ -3,11 +3,11 @@
     <div class="list">
       <a class="item item-icon-right assertive" href="#/tab/dash/news">
         News
-        <i class="icon ion-ios-arrow-right"></i>
+        <i class="icon ion-chevron-right icon-accessory"></i>
       </a>
     </div>
     <h4 class="title assertive">Nouvelles Stories</h4>
-    <ion-scroll zooming="false" direction="y" style="height: 88vh">
+    <ion-scroll zooming="false" direction="y" style="height: 65vh">
       <div class="list card" ng-repeat="story in stories | orderBy: '-date'">
         <div class="item item-divider assertive">{{story.name}}</div>
         <div class="item item-body">

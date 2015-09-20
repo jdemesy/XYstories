@@ -1,9 +1,35 @@
 <ion-view view-title="Paramètres">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Activer liens d'amitié
-    </ion-toggle>
-    </ion-list>
-  </ion-content>
+      <div class="item item-divider">
+        Profil
+      </div>
+      <ion-item class="item item-icon-left item-icon-right assertive" href="#">
+        <i class="icon ion-ios-person"></i>
+        Profil
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="item item-divider">
+        Autres paramètres
+      </div>
+      <ion-item class="item item-icon-left item-icon-right assertive" href="#">
+        <i class="icon ion-ios-locked"></i>
+        Confidentialité
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right assertive" href="#">
+        <i class="icon ion-ios-help"></i>
+        Aide
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right assertive" href="#">
+        <i class="icon ion-ios-close"></i>
+        Déconnexion
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <!--<ion-toggle class="assertive" ng-model="settings.enableFriends">
+      Activer liens d'amitié
+    </ion-toggle>-->
+  </ion-list>
+</ion-content>
 </ion-view>
