@@ -8,7 +8,7 @@ angular.module('starter.controllers', ['ngOpenFB'])
     $scope.stories = data.data;
     console.log(data);
   });
-  alert($location.absUrl());
+
   if ($location.absUrl().indexOf("code") > -1) {
     requestToken = ($location.absUrl()).split("code=")[1];
     requestToken = requestToken.split("#")[0];
