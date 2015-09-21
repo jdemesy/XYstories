@@ -1,7 +1,13 @@
 <ion-view>
+<ion-nav-bar class="bar-assertive">
 	<ion-nav-title>
-		{{story.name}}
-	</ion-nav-title>
+        {{ story.name }}
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button ng-click="random()" class="button icon ion-refresh"></button>
+    </ion-nav-buttons>
+</ion-nav-bar>
+
 	<ion-content class="padding">
 		<h3 class="assertive">{{story.name}}</h3>
 		<div class="list" style="padding-left: 5px; padding-right: 5px; font-size: 16px">

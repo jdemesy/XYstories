@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngOpenFB'])
 
 .controller('DashCtrl', function($scope, $http, Backand) {
   $http.get(Backand.getApiUrl() + '/1/objects/stories').success(function(data) {
@@ -53,10 +53,38 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ShuffleCtrl', function($scope, $stateParams, $http, Backand) {
-  $http.get(Backand.getApiUrl() + '/1/query/data/getRandomStory').success(function(data) {
-    $scope.story = data;
-    console.log(data);
-  });
+  $scope.random = function() {
+    $http.get(Backand.getApiUrl() + '/1/query/data/getRandomStory').success(function(data) {
+      $scope.story = data[0];
+      console.log($scope.story);
+    });
+  };
+  $scope.random();
+})
+
+.controller('LoginCtrl', function($scope, ngFB) {
+  $scope.data = {};
+  $scope.fbLogin = function () {
+      ngFB.login({scope: 'email,publish_actions'}).then(
+          function (response) {
+              if (response.status === 'connected') {
+                  console.log('Facebook login succeeded');
+              } else {
+                  alert('Facebook login failed');
+              }
+          });
+  };
+
+  $scope.login = function() {
+     LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+         $state.go('tab.dash');
+     }).error(function(data) {
+         var alertPopup = $ionicPopup.alert({
+             title: 'Login failed!',
+             template: 'Please check your credentials!'
+         });
+     });
+  }
 })
 
 .controller('AccountCtrl', function($scope) {
