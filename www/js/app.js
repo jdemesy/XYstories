@@ -5,6 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+var requestToken = "";
+var accessToken = "";
+var clientId = "269649216122-h860hf1h9g776fu24grbdv35t1g7tuir.apps.googleusercontent.com";
+var clientSecret = "kdvhXT2Ci8yZ_f1yoGHnr13B";
+
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'backand', 'ngCookies', 'ngOpenFB'])
 
 .run(function($ionicPlatform, ngFB) {
@@ -20,6 +25,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleLightContent();
     }
   });
+})
+
+.config(function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('login_oauth', {
+            url: '/login_oauth',
+            templateUrl: 'templates/login_oauth.html',
+            controller: 'LoginController'
+        })
+        .state('secure', {
+            url: '/secure',
+            templateUrl: 'templates/secure.html',
+            controller: 'SecureController'
+        });
+    $urlRouterProvider.otherwise('/login');
 })
 
 .config(function($stateProvider, $urlRouterProvider, BackandProvider) {
@@ -126,7 +146,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
-  });
+  })
+
+  .state('callback', {
+      url: '/callback',
+      templateUrl: 'templates/login_oauth.html',
+      controller: 'LoginCtrl'
+  })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

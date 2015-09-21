@@ -1,12 +1,31 @@
+ref = "";
 angular.module('starter.controllers', ['ngOpenFB'])
 
-.controller('DashCtrl', function($scope, $http, Backand) {
+.controller('DashCtrl', function($scope, $http, $location, Backand) {
   $http.get(Backand.getApiUrl() + '/1/objects/stories').success(function(data) {
     // you can do some processing here
     console.log("loading json");
     $scope.stories = data.data;
     console.log(data);
   });
+  alert($location.absUrl());
+  if ($location.absUrl().indexOf("code") > -1) {
+    requestToken = ($location.absUrl()).split("code=")[1];
+    requestToken = requestToken.split("#")[0];
+    console.log(requestToken);
+    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+    $http.post("https://accounts.google.com/o/oauth2/token", {data: "client_id=" + clientId + "&client_secret=" 
+    + clientSecret + "&redirect_uri=http://localhost:8100/" + "&grant_type=authorization_code" + "&code=" + requestToken})
+                        .success(function(data) {
+                            alert(data);
+                            $location.path("/secure");
+                            alert('ok');
+                        })
+                        .error(function(data, status) {
+                            alert("ERROR: " + data);
+                        });
+                    ref.close();
+  }
 })
 
 .controller('NewsCtrl', function($scope, $http, Backand) {
@@ -85,6 +104,36 @@ angular.module('starter.controllers', ['ngOpenFB'])
          });
      });
   }
+})
+
+.controller('LoginController', function($scope, $http, $location) {
+
+    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+    $scope.login = function() {
+        var ref = window.open('https://accounts.google.com/o/oauth2/auth?client_id=' + clientId + '&redirect_uri=http://localhost:8100/&scope=email&approval_prompt=force&response_type=code&access_type=offline', '_blank', 'location=no');
+
+        window.setTimeout(function() {
+          console.log(ref);
+        ref.addEventListener('load', function(event) {
+
+                alert(event.url);
+
+          
+
+        });
+        }, 0);
+    }
+
+    if (typeof String.prototype.startsWith != 'function') {
+        String.prototype.startsWith = function (str){
+            return this.indexOf(str) == 0;
+        };
+    }
+})
+
+.controller('SecureController', function($scope, $http) {
+    $scope.accessToken = accessToken;
 })
 
 .controller('AccountCtrl', function($scope) {
